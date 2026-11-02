@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JF Fitness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="Styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="brand" href="#inicio" aria-label="JF Fitness - início">
+            <span class="brand__mark" aria-hidden="true">JF</span>
+            <span class="brand__name">JF Fitness</span>
+        </a>
+        <a class="button button--header" href="#download">Baixar o app</a>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio" aria-labelledby="hero-title">
+            <div class="hero__intro">
+                <h1 id="hero-title">O app perfeito para acompanhar sua vida fitness.</h1>
+            </div>
+
+            <div class="hero__visual">
+                <img
+                    class="hero__image"
+                    src="img/print_1.png"
+                    alt="Tela inicial do app JF Fitness com resumo de atividades, passos e distância"
+                >
+            </div>
+
+            <ul class="hero__highlights" aria-label="Destaques do app">
+                <li><span aria-hidden="true">💓</span> Saúde</li>
+                <li><span aria-hidden="true">🏃</span> Exercícios</li>
+                <li><span aria-hidden="true">🤼‍♂️</span> Amigos</li>
+            </ul>
+        </section>
+
+        <section class="daily" id="rotina" aria-labelledby="daily-title">
+            <div class="daily__heading">
+                <p class="daily__eyebrow">Sua rotina, no seu ritmo</p>
+                <h2 id="daily-title">Acompanhe o seu dia</h2>
+                <p>Registre pequenas conquistas e mantenha o foco nas suas metas.</p>
+            </div>
+
+            <div class="daily__grid">
+                <article class="daily-card">
+                    <div class="daily-card__heading">
+                        <span class="daily-card__icon" aria-hidden="true">👟</span>
+                        <h3>Passos</h3>
+                    </div>
+                    <p class="daily-card__value"><span id="steps-count">0</span> <span>passos</span></p>
+                    <div
+                        class="progress"
+                        id="steps-progress"
+                        role="progressbar"
+                        aria-label="Progresso da meta diária de passos"
+                        aria-valuemin="0"
+                        aria-valuemax="8000"
+                        aria-valuenow="0"
+                    >
+                        <span class="progress__bar" id="steps-progress-bar"></span>
+                    </div>
+                    <p class="daily-card__hint">Meta: 8.000 passos</p>
+                    <button class="button button--secondary" id="add-steps" type="button">Adicionar 500 passos</button>
+                </article>
+
+                <article class="daily-card">
+                    <div class="daily-card__heading">
+                        <span class="daily-card__icon" aria-hidden="true">💧</span>
+                        <h3>Água</h3>
+                    </div>
+                    <p class="daily-card__value"><span id="water-count">0</span> <span>de 2.000 ml</span></p>
+                    <div
+                        class="progress"
+                        id="water-progress"
+                        role="progressbar"
+                        aria-label="Progresso da meta diária de água"
+                        aria-valuemin="0"
+                        aria-valuemax="2000"
+                        aria-valuenow="0"
+                    >
+                        <span class="progress__bar" id="water-progress-bar"></span>
+                    </div>
+                    <p class="daily-card__hint">Cada copo registra 250 ml</p>
+                    <button class="button button--secondary" id="add-water" type="button">Registrar 1 copo</button>
+                </article>
+
+                <article class="daily-card daily-card--workout">
+                    <div class="daily-card__heading">
+                        <span class="daily-card__icon" aria-hidden="true">🏃</span>
+                        <h3>Exercício</h3>
+                    </div>
+                    <p class="daily-card__value"><span id="workout-count">0</span> <span>minutos hoje</span></p>
+                    <p class="daily-card__hint">Registre uma atividade para acompanhar seu tempo de exercício.</p>
+                    <form class="workout-form" id="workout-form">
+                        <label class="sr-only" for="workout-type">Tipo de exercício</label>
+                        <select id="workout-type" name="type">
+                            <option value="Caminhada">Caminhada</option>
+                            <option value="Corrida">Corrida</option>
+                            <option value="Musculação">Musculação</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                        <label class="sr-only" for="workout-minutes">Duração em minutos</label>
+                        <input
+                            id="workout-minutes"
+                            name="minutes"
+                            type="number"
+                            min="1"
+                            max="1440"
+                            step="1"
+                            placeholder="Minutos"
+                            required
+                        >
+                        <button class="button button--secondary" type="submit">Registrar exercício</button>
+                    </form>
+                </article>
+            </div>
+
+            <div class="activity-log">
+                <h3>Atividades de hoje</h3>
+                <p class="activity-log__empty" id="activity-empty">Nenhum exercício registrado hoje.</p>
+                <ul class="activity-log__list" id="activity-list" aria-live="polite"></ul>
+                <p class="daily__status" id="daily-status" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="features" aria-labelledby="features-title">
+            <div class="features__heading">
+                <h2 id="features-title">Tudo para acompanhar sua evolução</h2>
+                <p>Recursos simples para cuidar da sua rotina e compartilhar cada conquista.</p>
+            </div>
+
+            <article class="feature">
+                <div class="feature__visual">
+                    <img
+                        class="feature__image"
+                        src="img/print_2.png"
+                        alt="Tela do app para definir a meta diária de calorias"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="feature__copy">
+                    <h3>Acompanhe suas calorias</h3>
+                    <p>Defina metas diárias e acompanhe seu movimento para entender melhor sua atividade e manter o foco na sua evolução.</p>
+                </div>
+            </article>
+
+            <article class="feature feature--reverse">
+                <div class="feature__visual">
+                    <img
+                        class="feature__image"
+                        src="img/print_3.png"
+                        alt="Tela do app com opções de caminhada, corrida e treino funcional"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="feature__copy">
+                    <h3>Encontre seu próximo exercício</h3>
+                    <p>Escolha entre atividades como caminhada, corrida e treino funcional, e acompanhe seus exercícios do seu jeito.</p>
+                </div>
+            </article>
+
+            <article class="feature">
+                <div class="feature__visual">
+                    <img
+                        class="feature__image"
+                        src="img/print_4.png"
+                        alt="Tela de compartilhamento com atividades e conquistas de amigos"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="feature__copy">
+                    <h3>Compartilhe com seus amigos</h3>
+                    <p>Veja as atividades da sua comunidade, comemore cada conquista e mantenha a motivação em boa companhia.</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="download" id="download" aria-labelledby="download-title">
+            <h2 id="download-title">Dê o próximo passo na sua rotina</h2>
+            <a class="button button--download" href="#inicio">Baixar o app</a>
+            <p class="download__note">Totalmente gratuito</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Todos os direitos reservados</p>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
